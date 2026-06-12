@@ -1,63 +1,29 @@
-# FastDeck Tools
+# FastDeck
 
-A **Yarn Workspaces monorepo** powering the FastDeck suite of applications.
+FastDeck is a hardware-agnostic audio-networking application that turns nearby computers, smartphones, and tablets into a synchronized, unified speaker system using local Wi-Fi and Bluetooth protocols.
 
-## Workspaces
+## Monorepo Structure
 
-| Workspace | Path | Description |
-|-----------|------|-------------|
-| `@fastdeck/web` | `apps/web` | React web application (Vite) |
-| `@fastdeck/desktop` | `apps/desktop` | Electron.js desktop application |
-| `@fastdeck/mobile` | `apps/mobile` | React Native mobile application |
-| `@fastdeck/shared` | `packages/shared` | Shared types, utilities, and constants |
+- `apps/desktop/`: Electron desktop application wrapper.
+- `apps/mobile/`: Tauri mobile application wrapper for iOS and Android.
+- `apps/web/`: Web landing page and documentation viewer.
+- `apps/server/`: Local gateway daemon (written in Rust) managing network routing, audio buffer queues, and peer-to-device synchronization.
+- `shared/common/`: Common presentation components, SVGs, and locale assets.
+- `shared/client-common/`: Shared client store (Zustand), providers, and views.
 
 ## Getting Started
 
-### Prerequisites
+1. Install dependencies:
+   ```bash
+   yarn install
+   ```
 
-- **Node.js** >= 18.0.0
-- **Yarn** Classic (v1)
+2. Run development servers:
+   ```bash
+   yarn dev
+   ```
 
-### Installation
-
-```bash
-yarn install
-```
-
-### Development
-
-```bash
-# Web app
-yarn dev:web
-
-# Desktop app (coming soon)
-yarn dev:desktop
-
-# Mobile app (coming soon)
-yarn dev:mobile
-```
-
-### Build
-
-```bash
-# Web app
-yarn build:web
-```
-
-## Project Structure
-
-```
-tools/
-├── apps/
-│   ├── web/          # React + Vite web app
-│   ├── desktop/      # Electron.js desktop app (planned)
-│   └── mobile/       # React Native mobile app (planned)
-├── packages/
-│   └── shared/       # Shared code across all apps
-├── package.json      # Root workspace configuration
-└── tsconfig.base.json
-```
-
-## License
-
-[MIT](LICENSE)
+3. Run test suites:
+   ```bash
+   yarn test:all
+   ```

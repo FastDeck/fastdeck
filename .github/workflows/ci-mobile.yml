@@ -45,7 +45,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Lint
-        run: yarn workspace audiomesh-mobile run lint
+        run: yarn workspace fastdeck-mobile run lint
 
       - name: Build Frontend
         run: yarn mobile:build

@@ -14,7 +14,7 @@ pub async fn run_server(addr: SocketAddr) -> Result<(), Box<dyn std::error::Erro
     // Create Axum Router with mesh services
     let app = create_router(&config);
 
-    tracing::info!("AudioMesh Rust backend server listening on {}", addr);
+    tracing::info!("FastDeck Rust backend server listening on {}", addr);
 
     let listener = tokio::net::TcpListener::bind(&addr).await?;
 

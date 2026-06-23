@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # =============================================================================
-# test_real_api.sh — API Test Suite for AudioMesh Backend
+# test_real_api.sh — API Test Suite for FastDeck Backend
 #
-# Tests all AudioMesh REST endpoints (room CRUD, topology, RTT) and verifies
+# Tests all FastDeck REST endpoints (room CRUD, topology, RTT) and verifies
 # pass/fail tracking across all test steps.
 # =============================================================================
 
@@ -102,7 +102,7 @@ run_api_test() {
 # ── Preflight Checks ──────────────────────────────────────────────────────────
 clear
 printf "${BOLD}====================================================${RESET}\n"
-printf "${BOLD}       AudioMesh REST API Test Tool              ${RESET}\n"
+printf "${BOLD}       FastDeck REST API Test Tool              ${RESET}\n"
 printf "${BOLD}====================================================${RESET}\n"
 printf "Target Server URL: ${CYAN}%s${RESET}\n" "${BASE_URL}"
 
@@ -117,7 +117,7 @@ fi
 res=$(request GET "/health")
 status_code=$(printf "%s\n" "$res" | jq -r '.status')
 if [ "${status_code:-0}" -eq 0 ] || [ "${status_code:-0}" -ne 200 ]; then
-  print_error "Cannot connect to AudioMesh backend server at ${BASE_URL}."
+  print_error "Cannot connect to FastDeck backend server at ${BASE_URL}."
   printf "Ensure the server is running (e.g. 'cargo run' or similar).\n"
   exit 1
 fi

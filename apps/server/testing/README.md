@@ -1,6 +1,6 @@
 # apps/server/testing
 
-Test scripts and tools for the AudioMesh Rust backend server.
+Test scripts and tools for the FastDeck Rust backend server.
 
 ---
 

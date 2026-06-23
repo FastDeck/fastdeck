@@ -1,14 +1,14 @@
 [package]
-name = "audiomesh-server"
+name = "fastdeck-server"
 version = "0.0.1"
 edition = "2021"
 
 [lib]
-name = "audiomesh_server"
+name = "fastdeck_server"
 path = "src/lib.rs"
 
 [[bin]]
-name = "audiomesh-server"
+name = "fastdeck-server"
 path = "src/main.rs"
 
 [dependencies]

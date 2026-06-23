@@ -6,75 +6,6 @@ import { useServerHealth } from '@services';
 const TitleBar = () => {
   const [platform, setPlatform] = useState<string>('unknown');
   const { data, isFetching, refetch } = useServerHealth();
-  const [isOnline, setIsOnline] = useState<boolean>(() => navigator.onLine);
-  const [checkingInternet, setCheckingInternet] = useState<boolean>(false);
-
-  const checkInternet = async (options?: { silent?: boolean }) => {
-    const silent = options?.silent ?? false;
-    if (!silent) {
-      setCheckingInternet(true);
-    }
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3000);
-    try {
-      await fetch('https://clients3.google.com/generate_204', {
-        mode: 'no-cors',
-        cache: 'no-store',
-        signal: controller.signal,
-      });
-      setIsOnline(true);
-    } catch (_) {
-      // Fallback: try Apple's captive portal check which is extremely reliable globally
-      const fallbackController = new AbortController();
-      const fallbackTimeout = setTimeout(
-        () => fallbackController.abort(),
-        3000,
-      );
-      try {
-        await fetch('http://captive.apple.com/hotspot-detect.html', {
-          mode: 'no-cors',
-          cache: 'no-store',
-          signal: fallbackController.signal,
-        });
-        setIsOnline(true);
-      } catch (err) {
-        setIsOnline(false);
-      } finally {
-        clearTimeout(fallbackTimeout);
-      }
-    } finally {
-      clearTimeout(timeoutId);
-      if (!silent) {
-        setCheckingInternet(false);
-      }
-    }
-  };
-
-  useEffect(() => {
-    const handleOnline = () => {
-      setIsOnline(true);
-      checkInternet({ silent: true });
-    };
-    const handleOffline = () => setIsOnline(false);
-
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-
-    // Initial check
-    checkInternet({ silent: false });
-
-    // Periodic fallback check (especially for mobile webviews where online/offline events are unreliable)
-    const intervalId = setInterval(() => {
-      checkInternet({ silent: true });
-    }, 10000);
-
-    return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-      clearInterval(intervalId);
-    };
-  }, []);
-
   const status = isFetching
     ? 'checking'
     : data?.status === 'connected'
@@ -198,49 +129,6 @@ const TitleBar = () => {
           borderColor="border/20"
           flexShrink={0}
         >
-          {/* Internet Status */}
-          <HStack
-            gap={1.5}
-            cursor="pointer"
-            onClick={() => checkInternet({ silent: false })}
-            title="Click to recheck Internet Connection"
-            alignItems="center"
-          >
-            <Box
-              w={1.5}
-              h={1.5}
-              borderRadius="full"
-              bg={
-                checkingInternet
-                  ? 'yellow.400'
-                  : isOnline
-                    ? 'success.400'
-                    : 'error.400'
-              }
-              className={checkingInternet ? 'pulse-anim' : ''}
-              style={
-                !checkingInternet && isOnline
-                  ? { boxShadow: '0 0 6px var(--chakra-colors-success-400)' }
-                  : !checkingInternet && !isOnline
-                    ? { boxShadow: '0 0 6px var(--chakra-colors-error-400)' }
-                    : {}
-              }
-            />
-            {checkingInternet ? (
-              <Spinner size="xs" color="primary" />
-            ) : (
-              <Text
-                fontSize="9px"
-                fontWeight="bold"
-                color="fg.muted"
-                whiteSpace="nowrap"
-                lineHeight="1"
-              >
-                {isOnline ? 'Internet: Online' : 'Internet: Offline'}
-              </Text>
-            )}
-          </HStack>
-
           {/* Mesh Server Status */}
           <HStack
             gap={1.5}

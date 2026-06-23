@@ -1,6 +1,6 @@
 {
-  "name": "audiomesh-web",
-  "description": "AudioMesh projects",
+  "name": "fastdeck-web",
+  "description": "FastDeck projects",
   "version": "0.1.0",
   "main": "index.tsx",
   "scripts": {
@@ -26,7 +26,7 @@
     "@tanstack/react-form": "^1.33.0",
     "@tanstack/react-query": "^5.51.23",
     "@tanstack/react-query-devtools": "^5.51.23",
-    "audiomesh-common": "workspace:*",
+    "fastdeck-common": "workspace:*",
     "framer-motion": "^11.3.2",
     "fuse.js": "^7.0.0",
     "i18next": "^23.11.2",

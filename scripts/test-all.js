@@ -9,10 +9,10 @@ console.log(
 );
 
 const workspaces = [
-  { name: 'audiomesh-web', type: 'jest' },
-  { name: 'audiomesh-server', type: 'cargo' },
-  { name: 'audiomesh-desktop', type: 'jest' },
-  { name: 'audiomesh-mobile', type: 'jest' },
+  { name: 'fastdeck-web', type: 'jest' },
+  { name: 'fastdeck-server', type: 'cargo' },
+  { name: 'fastdeck-desktop', type: 'jest' },
+  { name: 'fastdeck-mobile', type: 'jest' },
 ];
 
 const failures = [];

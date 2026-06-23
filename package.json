@@ -7,7 +7,8 @@
     "apps/desktop",
     "apps/mobile",
     "shared/common",
-    "shared/client-common"
+    "shared/client-common",
+    "shared/desktop-host"
   ],
   "scripts": {
     "web:dev": "yarn workspace audiomesh-web start",

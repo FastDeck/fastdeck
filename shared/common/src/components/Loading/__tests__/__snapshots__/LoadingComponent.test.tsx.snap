@@ -6,16 +6,16 @@ exports[`Loading Component should render correctly 1`] = `
     class="css-3dhkam"
   >
     <div
-      class="css-ep25vg"
+      class="css-hz5ddu"
     />
     <div
-      class="css-17785m3"
+      class="css-1oqxa0m"
     />
     <div
-      class="css-16gbd9d"
+      class="css-a2nsrm"
     />
     <div
-      class="css-78hbwq"
+      class="css-srxs9s"
     />
     <div
       class="css-18n5hzb"
@@ -125,7 +125,7 @@ exports[`Loading Component should render correctly 1`] = `
       </svg>
     </div>
     <div
-      class="css-34ne0f"
+      class="css-1x3i9ft"
     />
     <div
       class="css-8qtdyu"
@@ -134,7 +134,7 @@ exports[`Loading Component should render correctly 1`] = `
         class="css-1rto8f8"
       >
         <div
-          class="css-1nccjsg"
+          class="css-m497vv"
         />
         <div
           class="css-bsfus6"
@@ -150,7 +150,7 @@ exports[`Loading Component should render correctly 1`] = `
               width="220"
             >
               <line
-                stroke="rgba(186, 200, 215, 0.5)"
+                stroke="rgba(255, 183, 124, 0.5)"
                 stroke-dasharray="15,6"
                 stroke-width="1.5"
                 x1="110"
@@ -168,7 +168,7 @@ exports[`Loading Component should render correctly 1`] = `
                 />
               </line>
               <line
-                stroke="rgba(186, 200, 215, 0.5)"
+                stroke="rgba(255, 183, 124, 0.5)"
                 stroke-dasharray="15,6"
                 stroke-width="1.5"
                 x1="110"
@@ -186,7 +186,7 @@ exports[`Loading Component should render correctly 1`] = `
                 />
               </line>
               <line
-                stroke="rgba(186, 200, 215, 0.5)"
+                stroke="rgba(255, 183, 124, 0.5)"
                 stroke-dasharray="15,6"
                 stroke-width="1.5"
                 x1="110"
@@ -204,7 +204,7 @@ exports[`Loading Component should render correctly 1`] = `
                 />
               </line>
               <line
-                stroke="rgba(186, 200, 215, 0.5)"
+                stroke="rgba(255, 183, 124, 0.5)"
                 stroke-dasharray="15,6"
                 stroke-width="1.5"
                 x1="110"
@@ -222,7 +222,7 @@ exports[`Loading Component should render correctly 1`] = `
                 />
               </line>
               <line
-                stroke="rgba(186, 200, 215, 0.5)"
+                stroke="rgba(255, 183, 124, 0.5)"
                 stroke-dasharray="15,6"
                 stroke-width="1.5"
                 x1="110"
@@ -240,7 +240,7 @@ exports[`Loading Component should render correctly 1`] = `
                 />
               </line>
               <line
-                stroke="rgba(186, 200, 215, 0.5)"
+                stroke="rgba(255, 183, 124, 0.5)"
                 stroke-dasharray="15,6"
                 stroke-width="1.5"
                 x1="110"
@@ -258,7 +258,7 @@ exports[`Loading Component should render correctly 1`] = `
                 />
               </line>
               <line
-                stroke="rgba(186, 200, 215, 0.5)"
+                stroke="rgba(255, 183, 124, 0.5)"
                 stroke-dasharray="15,6"
                 stroke-width="1.5"
                 x1="110"
@@ -277,66 +277,66 @@ exports[`Loading Component should render correctly 1`] = `
               </line>
             </svg>
             <div
-              class="css-3fleot"
+              class="css-xtvx5f"
               style="top: 138px; left: 165px;"
             >
               <div
-                class="css-1vrsmlf"
+                class="css-10rm706"
               />
             </div>
             <div
-              class="css-g33q4k"
+              class="css-1w9fa56"
               style="top: 184px; left: 108px;"
             >
               <div
-                class="css-1vrsmlf"
+                class="css-10rm706"
               />
             </div>
             <div
-              class="css-kdchbc"
+              class="css-bqd2ep"
               style="top: 141px; left: 43px;"
             >
               <div
-                class="css-1vrsmlf"
+                class="css-10rm706"
               />
             </div>
             <div
-              class="css-14t3mz5"
+              class="css-1rctp74"
               style="top: 73px; left: 26px;"
             >
               <div
-                class="css-1vrsmlf"
+                class="css-10rm706"
               />
             </div>
             <div
-              class="css-m79yuh"
+              class="css-b4338s"
               style="top: 29px; left: 96px;"
             >
               <div
-                class="css-1vrsmlf"
+                class="css-10rm706"
               />
             </div>
             <div
-              class="css-o40as9"
+              class="css-geitqo"
               style="top: 40px; left: 162px;"
             >
               <div
-                class="css-1vrsmlf"
+                class="css-10rm706"
               />
             </div>
             <div
-              class="css-1kjpwta"
+              class="css-16lx7wh"
               style="top: 86px; left: 173px;"
             >
               <div
-                class="css-1vrsmlf"
+                class="css-10rm706"
               />
             </div>
             <div
-              class="css-1rylosz"
+              class="css-1eo1mon"
             />
             <div
-              class="css-1sndoz5"
+              class="css-otteey"
             />
             <div
               class="css-job0s7"
@@ -366,7 +366,7 @@ exports[`Loading Component should render correctly 1`] = `
       </div>
        
       <p
-        class="css-13n7pte"
+        class="css-1c4f822"
       >
         FastDeck
       </p>
@@ -379,51 +379,51 @@ exports[`Loading Component should render correctly 1`] = `
         class="css-vujoj1"
       >
         <div
-          class="css-8o9lcj"
+          class="css-1srz2cn"
         />
       </div>
       <div
         class="css-21rd9q"
       >
         <div
-          class="css-hql7av"
+          class="css-pqwxl4"
         />
         <div
-          class="css-i61mm5"
+          class="css-1pkzp4j"
         />
         <div
-          class="css-1uycdup"
+          class="css-1f9te9u"
         />
         <div
-          class="css-1adad2d"
+          class="css-j4zg72"
         />
         <div
-          class="css-1k6u9ju"
+          class="css-zo52bl"
         />
         <div
-          class="css-o65zsb"
+          class="css-13g3b74"
         />
         <div
-          class="css-g0vt0c"
+          class="css-1386pys"
         />
         <div
-          class="css-k3cmzv"
+          class="css-as5dja"
         />
       </div>
       <div
         class="css-1qrgt7a"
       >
         <div
-          class="css-cid8oq"
+          class="css-1bbpx5e"
         />
         <p
-          class="css-1md6m87"
+          class="css-102pwn3"
         >
           MESH STATUS: SYNCING
         </p>
       </div>
       <div
-        class="css-1gf7kfk"
+        class="css-c1jhl5"
       >
         <p
           class="css-v7jnhe"
@@ -432,7 +432,7 @@ exports[`Loading Component should render correctly 1`] = `
           INITIALIZING AUDIO SUBSYSTEM...
         </p>
         <p
-          class="css-1jh7hgn"
+          class="css-1yxb1hu"
         />
       </div>
     </div>

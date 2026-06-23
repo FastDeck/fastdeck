@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import App from 'audiomesh-client-common';
+import App from 'audiomesh-desktop-host';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 

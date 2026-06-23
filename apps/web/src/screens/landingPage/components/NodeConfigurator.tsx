@@ -53,7 +53,7 @@ export const NodeConfigurator = ({
                 borderRadius="full"
                 bg={
                   activeNode.status === 'active'
-                    ? '#bac8d7'
+                    ? '#ffb77c'
                     : activeNode.status === 'syncing'
                       ? 'yellow.400'
                       : 'gray.500'

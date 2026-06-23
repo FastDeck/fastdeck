@@ -24,9 +24,9 @@ const progressKeyframe = keyframes`
 
 // Pulse keyframe for network status
 const pulseKeyframe = keyframes`
-  0% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 0 0 rgba(186, 200, 215, 0.4); }
-  50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 8px 2px rgba(186, 200, 215, 0.6); }
-  100% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 0 0 rgba(186, 200, 215, 0.4); }
+  0% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 0 0 rgba(255, 183, 124, 0.4); }
+  50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 8px 2px rgba(255, 183, 124, 0.6); }
+  100% { transform: scale(0.9); opacity: 0.6; box-shadow: 0 0 0 0 rgba(255, 183, 124, 0.4); }
 `;
 
 // Concentric ripples for audio broadcast/sync
@@ -44,8 +44,8 @@ const dashOutwardKeyframe = keyframes`
 
 // Satellite pulse animation
 const satellitePulseKeyframe = keyframes`
-  0%, 100% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(186, 200, 215, 0.4); }
-  50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 10px 3px rgba(186, 200, 215, 0.7); }
+  0%, 100% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(255, 183, 124, 0.4); }
+  50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 10px 3px rgba(255, 183, 124, 0.7); }
 `;
 
 // Equalizer bar animation for sound play
@@ -146,8 +146,8 @@ const LoadingComponent = () => {
         left="4"
         width="16px"
         height="16px"
-        borderTop="2px solid rgba(186, 200, 215, 0.2)"
-        borderLeft="2px solid rgba(186, 200, 215, 0.2)"
+        borderTop="2px solid rgba(255, 183, 124, 0.2)"
+        borderLeft="2px solid rgba(255, 183, 124, 0.2)"
         zIndex={2}
       />
       <Box
@@ -156,8 +156,8 @@ const LoadingComponent = () => {
         right="4"
         width="16px"
         height="16px"
-        borderTop="2px solid rgba(186, 200, 215, 0.2)"
-        borderRight="2px solid rgba(186, 200, 215, 0.2)"
+        borderTop="2px solid rgba(255, 183, 124, 0.2)"
+        borderRight="2px solid rgba(255, 183, 124, 0.2)"
         zIndex={2}
       />
       <Box
@@ -166,8 +166,8 @@ const LoadingComponent = () => {
         left="4"
         width="16px"
         height="16px"
-        borderBottom="2px solid rgba(186, 200, 215, 0.2)"
-        borderLeft="2px solid rgba(186, 200, 215, 0.2)"
+        borderBottom="2px solid rgba(255, 183, 124, 0.2)"
+        borderLeft="2px solid rgba(255, 183, 124, 0.2)"
         zIndex={2}
       />
       <Box
@@ -176,8 +176,8 @@ const LoadingComponent = () => {
         right="4"
         width="16px"
         height="16px"
-        borderBottom="2px solid rgba(186, 200, 215, 0.2)"
-        borderRight="2px solid rgba(186, 200, 215, 0.2)"
+        borderBottom="2px solid rgba(255, 183, 124, 0.2)"
+        borderRight="2px solid rgba(255, 183, 124, 0.2)"
         zIndex={2}
       />
 
@@ -253,7 +253,7 @@ const LoadingComponent = () => {
         zIndex={1}
         pointerEvents="none"
         backgroundImage="
-          radial-gradient(circle at center, rgba(186, 200, 215, 0.08) 0%, transparent 75%),
+          radial-gradient(circle at center, rgba(255, 183, 124, 0.08) 0%, transparent 75%),
           linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
           linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px)
         "
@@ -288,7 +288,7 @@ const LoadingComponent = () => {
             position="absolute"
             width="160px"
             height="160px"
-            bg="radial-gradient(circle, rgba(186, 200, 215, 0.15) 0%, transparent 70%)"
+            bg="radial-gradient(circle, rgba(255, 183, 124, 0.15) 0%, transparent 70%)"
             filter="blur(15px)"
             css={{
               animation: `${glowKeyframe} 2s ease-in-out infinite alternate`,
@@ -335,7 +335,7 @@ const LoadingComponent = () => {
                   y1="110"
                   x2={node.x}
                   y2={node.y}
-                  stroke="rgba(186, 200, 215, 0.5)"
+                  stroke="rgba(255, 183, 124, 0.5)"
                   strokeWidth="1.5"
                   strokeDasharray="15,6"
                 >
@@ -361,7 +361,7 @@ const LoadingComponent = () => {
                 height="18px"
                 borderRadius="full"
                 bg="rgba(18, 20, 22, 0.85)"
-                border="1.5px solid rgba(186, 200, 215, 0.9)"
+                border="1.5px solid rgba(255, 183, 124, 0.9)"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
@@ -375,7 +375,7 @@ const LoadingComponent = () => {
                   animationDelay: node.pulseDelay,
                 }}
               >
-                <Box width="5px" height="5px" borderRadius="full" bg="#bac8d7" />
+                <Box width="5px" height="5px" borderRadius="full" bg="#ffb77c" />
               </Box>
             ))}
 
@@ -387,7 +387,7 @@ const LoadingComponent = () => {
               left="60px"
               top="60px"
               borderRadius="full"
-              border="1.5px solid rgba(186, 200, 215, 0.2)"
+              border="1.5px solid rgba(255, 183, 124, 0.2)"
               css={{
                 animation: `${rippleKeyframe} 3s cubic-bezier(0.1, 0.8, 0.3, 1) infinite`,
               }}
@@ -399,7 +399,7 @@ const LoadingComponent = () => {
               left="60px"
               top="60px"
               borderRadius="full"
-              border="1.5px solid rgba(186, 200, 215, 0.1)"
+              border="1.5px solid rgba(255, 183, 124, 0.1)"
               css={{
                 animation: `${rippleKeyframe} 3s cubic-bezier(0.1, 0.8, 0.3, 1) infinite`,
                 animationDelay: '1.5s',
@@ -430,7 +430,7 @@ const LoadingComponent = () => {
           textTransform="uppercase"
           color="white"
           mb="1"
-          textShadow="0 0 15px rgba(186, 200, 215, 0.3)"
+          textShadow="0 0 15px rgba(255, 183, 124, 0.3)"
         >
           FastDeck
         </Text>
@@ -461,7 +461,7 @@ const LoadingComponent = () => {
           <Box
             position="absolute"
             height="100%"
-            background="linear-gradient(90deg, #34414d 0%, #bac8d7 100%)"
+            background="linear-gradient(90deg, #34414d 0%, #ffb77c 100%)"
             borderRadius="full"
             css={{
               animation: `${progressKeyframe} 1.8s cubic-bezier(0.65, 0.05, 0.36, 1) infinite`,
@@ -476,7 +476,7 @@ const LoadingComponent = () => {
               key={i}
               width="3px"
               height="100%"
-              bg="#bac8d7"
+              bg="#ffb77c"
               borderRadius="full"
               transformOrigin="bottom"
               css={{
@@ -493,7 +493,7 @@ const LoadingComponent = () => {
             width="6px"
             height="6px"
             borderRadius="full"
-            bg="#bac8d7"
+            bg="#ffb77c"
             mr="2"
             css={{
               animation: `${pulseKeyframe} 2s infinite ease-in-out`,
@@ -502,7 +502,7 @@ const LoadingComponent = () => {
           <Text
             fontFamily="mono"
             fontSize="10px"
-            color="rgba(186, 200, 215, 0.6)"
+            color="rgba(255, 183, 124, 0.6)"
             letterSpacing="0.1em"
           >
             MESH STATUS: SYNCING
@@ -515,12 +515,12 @@ const LoadingComponent = () => {
           alignItems="center"
           fontFamily="mono"
           fontSize="xs"
-          color="rgba(186, 200, 215, 0.8)"
+          color="rgba(255, 183, 124, 0.8)"
           letterSpacing="0.05em"
           height="1.5rem"
         >
           <Text mr="1">&gt; {loadingMessages[logIndex]}</Text>
-          <Text color="#bac8d7">{dots}</Text>
+          <Text color="#ffb77c">{dots}</Text>
         </Flex>
       </Flex>
     </Flex>

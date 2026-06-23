@@ -13,7 +13,7 @@ module.exports = {
       '@data/*': path.resolve(__dirname, '../../docs/*'),
       '@providers': path.resolve(
         __dirname,
-        '../../shared/client-common/src/providers',
+        '../../shared/desktop-host/src/providers',
       ),
       '@localization': path.resolve(
         __dirname,
@@ -21,27 +21,27 @@ module.exports = {
       ),
       '@routes': path.resolve(
         __dirname,
-        '../../shared/client-common/src/routes',
+        '../../shared/desktop-host/src/routes',
       ),
       '@uiStore': path.resolve(
         __dirname,
-        '../../shared/client-common/src/store/ui',
+        '../../shared/desktop-host/src/store/ui',
       ),
       '@screens': path.resolve(
         __dirname,
-        '../../shared/client-common/src/screens',
+        '../../shared/desktop-host/src/screens',
       ),
       '@screens/*': path.resolve(
         __dirname,
-        '../../shared/client-common/src/screens/*',
+        '../../shared/desktop-host/src/screens/*',
       ),
       '@appStore': path.resolve(
         __dirname,
-        '../../shared/client-common/src/store/app',
+        '../../shared/desktop-host/src/store/app',
       ),
       '@services': path.resolve(
         __dirname,
-        '../../shared/client-common/src/services',
+        '../../shared/desktop-host/src/services',
       ),
       '@testUtils': path.resolve(
         __dirname,
@@ -86,7 +86,7 @@ module.exports = {
         }
       });
 
-      // Include common and client-common folder in the main application's compilation
+      // Include common and desktop-host folder in the main application's compilation
       const mainBabelLoader = babelLoaders[0];
       if (mainBabelLoader) {
         const include = Array.isArray(mainBabelLoader.include)
@@ -94,7 +94,7 @@ module.exports = {
           : [mainBabelLoader.include];
         mainBabelLoader.include = include.concat([
           path.resolve(__dirname, '../../shared/common'),
-          path.resolve(__dirname, '../../shared/client-common'),
+          path.resolve(__dirname, '../../shared/desktop-host'),
         ]);
       }
 

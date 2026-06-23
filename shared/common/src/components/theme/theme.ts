@@ -112,9 +112,9 @@ const customConfig = defineConfig({
         'teal.600': { value: colors.teal[600] },
       },
       fonts: {
-        heading: { value: `'Geist', sans-serif` },
-        body: { value: `'Hanken Grotesk', sans-serif` },
-        mono: { value: `'JetBrains Mono', monospace` },
+        heading: { value: `'Inter', sans-serif` },
+        body: { value: `'Inter', sans-serif` },
+        mono: { value: `'Geist', monospace` },
       },
       fontSizes: {
         xs: { value: fontSize.xs },
@@ -173,6 +173,13 @@ const customConfig = defineConfig({
       },
       spacing: {
         unit: { value: '4px' },
+        xs: { value: '4px' },
+        sm: { value: '8px' },
+        md: { value: '16px' },
+        lg: { value: '24px' },
+        xl: { value: '32px' },
+        'deck-gutter': { value: '12px' },
+        'sidebar-width': { value: '280px' },
         gutter: { value: '24px' },
         'margin-mobile': { value: '16px' },
         'margin-desktop': { value: '64px' },
@@ -184,16 +191,16 @@ const customConfig = defineConfig({
     semanticTokens: {
       colors: {
         primary: {
-          value: { _light: '#53606d', _dark: '#bac8d7' },
+          value: { _light: colors.fastdeck.inversePrimary, _dark: colors.fastdeck.primary },
         },
         'green.700': {
-          value: { _light: '#0088cc', _dark: '#bac8d7' },
+          value: { _light: colors.fastdeck.inversePrimary, _dark: colors.fastdeck.primary },
         },
         'green.800': {
-          value: { _light: '#007bb9', _dark: '#9fadbb' },
+          value: { _light: colors.fastdeck.onPrimaryContainer, _dark: colors.fastdeck.onPrimaryContainer },
         },
         'green.900': {
-          value: { _light: '#006193', _dark: '#34414d' },
+          value: { _light: colors.fastdeck.primaryContainer, _dark: colors.fastdeck.primaryContainer },
         },
         'neutral.200': {
           value: { _light: colors.neutral[200], _dark: colors.neutral[800] },
@@ -202,31 +209,31 @@ const customConfig = defineConfig({
           value: { _light: colors.neutral[800], _dark: colors.neutral[200] },
         },
         fg: {
-          value: { _light: '#212529', _dark: '#e2e2e5' },
+          value: { _light: colors.fastdeck.inverseOnSurface, _dark: colors.fastdeck.onSurface },
         },
         'fg.muted': {
-          value: { _light: '#5b5f63', _dark: '#c4c7cb' },
+          value: { _light: colors.fastdeck.onSecondaryContainer, _dark: colors.fastdeck.onSurfaceVariant },
         },
         'fg.subtle': {
-          value: { _light: '#8e9196', _dark: '#8e9196' },
+          value: { _light: colors.fastdeck.outline, _dark: colors.fastdeck.outline },
         },
         'bg.default': {
-          value: { _light: '#f8f9fa', _dark: '#121416' },
+          value: { _light: colors.fastdeck.inverseSurface, _dark: colors.fastdeck.background },
         },
         'bg.panel': {
-          value: { _light: '#ffffff', _dark: '#1e2022' },
+          value: { _light: colors.white, _dark: colors.fastdeck.surfaceContainer },
         },
         'bg.subtle': {
-          value: { _light: '#e3e3e3', _dark: '#1a1c1e' },
+          value: { _light: colors.fastdeck.surfaceBright, _dark: colors.fastdeck.surfaceContainerLow },
         },
         'bg.muted': {
-          value: { _light: '#cccbcb', _dark: '#282a2c' },
+          value: { _light: colors.fastdeck.surfaceContainerHigh, _dark: colors.fastdeck.surfaceContainerHighest },
         },
         border: {
-          value: { _light: '#cccbcb', _dark: '#44474b' },
+          value: { _light: colors.fastdeck.outline, _dark: colors.fastdeck.outlineVariant },
         },
         'border.muted': {
-          value: { _light: '#e3e3e3', _dark: '#282a2c' },
+          value: { _light: colors.fastdeck.outlineVariant, _dark: colors.fastdeck.surfaceContainerHigh },
         },
         'pillar.top': {
           value: { _light: '#450470ff', _dark: '#7000b9ff' },
@@ -235,8 +242,6 @@ const customConfig = defineConfig({
           value: { _light: '#036943ff', _dark: '#00d184ff' },
         },
         // Terminal log line colors — adapt to light/dark mode
-        // Dark: bright neon for readability on dark bg
-        // Light: deeper saturated shades for readability on white bg
         'terminal.sys': {
           value: { _light: '#16a34a', _dark: '#4ade80' },
         },
@@ -261,10 +266,52 @@ const customConfig = defineConfig({
       'display-lg': {
         value: {
           fontFamily: 'heading',
-          fontSize: '48px',
+          fontSize: '32px',
+          fontWeight: '700',
+          lineHeight: '40px',
+          letterSpacing: '-0.02em',
+        },
+      },
+      'headline-md': {
+        value: {
+          fontFamily: 'heading',
+          fontSize: '24px',
           fontWeight: '600',
-          lineHeight: '56px',
-          letterSpacing: '-0.04em',
+          lineHeight: '32px',
+          letterSpacing: '-0.01em',
+        },
+      },
+      'title-sm': {
+        value: {
+          fontFamily: 'heading',
+          fontSize: '18px',
+          fontWeight: '600',
+          lineHeight: '24px',
+        },
+      },
+      'body-md': {
+        value: {
+          fontFamily: 'body',
+          fontSize: '14px',
+          fontWeight: '400',
+          lineHeight: '20px',
+        },
+      },
+      'label-caps': {
+        value: {
+          fontFamily: 'body',
+          fontSize: '12px',
+          fontWeight: '700',
+          lineHeight: '16px',
+          letterSpacing: '0.05em',
+        },
+      },
+      'mono-sm': {
+        value: {
+          fontFamily: 'mono',
+          fontSize: '12px',
+          fontWeight: '500',
+          lineHeight: '16px',
         },
       },
       'display-lg-mobile': {
@@ -276,29 +323,12 @@ const customConfig = defineConfig({
           letterSpacing: '-0.03em',
         },
       },
-      'headline-md': {
-        value: {
-          fontFamily: 'heading',
-          fontSize: '24px',
-          fontWeight: '500',
-          lineHeight: '32px',
-          letterSpacing: '-0.02em',
-        },
-      },
       'body-lg': {
         value: {
           fontFamily: 'body',
           fontSize: '18px',
           fontWeight: '400',
           lineHeight: '28px',
-        },
-      },
-      'body-md': {
-        value: {
-          fontFamily: 'body',
-          fontSize: '16px',
-          fontWeight: '400',
-          lineHeight: '24px',
         },
       },
       'label-sm': {

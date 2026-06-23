@@ -6,6 +6,8 @@ const {
   screen,
   dialog,
   shell,
+  session,
+  desktopCapturer,
 } = require('electron');
 const path = require('path');
 const fs = require('fs');
@@ -54,6 +56,30 @@ function createWindow() {
     }
   }
 
+  // Intercept and rewrite Referer and Origin headers for YouTube embeds to bypass Error 153 in Electron
+  session.defaultSession.webRequest.onBeforeSendHeaders(
+    { urls: ['*://*.youtube.com/*', '*://*.youtube-nocookie.com/*'] },
+    (details, callback) => {
+      details.requestHeaders['Referer'] = 'https://www.youtube.com/';
+      details.requestHeaders['Origin'] = 'https://www.youtube.com/';
+      callback({ cancel: false, requestHeaders: details.requestHeaders });
+    }
+  );
+
+  // Handle getDisplayMedia requests in Electron to prevent "Not supported" errors
+  session.defaultSession.setDisplayMediaRequestHandler((request, callback) => {
+    desktopCapturer.getSources({ types: ['screen', 'window'] }).then((sources) => {
+      if (sources.length > 0) {
+        callback({ video: sources[0], audio: 'loopback' });
+      } else {
+        callback({ error: 'No display sources found.' });
+      }
+    }).catch(err => {
+      console.error('Failed to get desktop sources in display media handler:', err);
+      callback({ error: err.message });
+    });
+  });
+
   const startUrl =
     process.env.ELECTRON_START_URL ||
     `file://${path.join(__dirname, 'build/index.html')}`;
@@ -92,6 +118,19 @@ ipcMain.on('open-external', (event, url) => {
     shell.openExternal(url);
   } catch (err) {
     console.error('Failed to open external URL:', err);
+  }
+});
+
+ipcMain.handle('get-desktop-sources', async () => {
+  try {
+    const sources = await desktopCapturer.getSources({ types: ['screen', 'window'] });
+    return sources.map(source => ({
+      id: source.id,
+      name: source.name,
+    }));
+  } catch (err) {
+    console.error('Failed to get desktop sources:', err);
+    throw err;
   }
 });
 

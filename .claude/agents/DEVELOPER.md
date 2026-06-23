@@ -20,7 +20,7 @@ When assigned to process a set of changes, the agent MUST follow these steps in 
 ### 2. Check and Update Documentation
 
 - Always check if a README update is required for any modified components (e.g., changes to routes, state keys, config settings, dependencies, or APIs).
-- If required, update or write the corresponding `README.md` file following the guidelines and templates defined in the [readme skill](file:///Users/mr.robot/z-stash/FastDeck/tools/.claude/skills/readme/SKILL.md).
+- If required, update or write the corresponding `README.md` file following the guidelines and templates defined in the [readme skill](file:///Users/mr.robot/z-stash/FastDeck/fastdeck/.claude/skills/readme/SKILL.md).
 
 ### 3. Create Jira Ticket
 

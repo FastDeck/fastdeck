@@ -1,9 +1,9 @@
 #!/bin/bash
-# setup.sh - Set up dependencies for FastDeck (including Node/Yarn, Rust, and iOS targets)
+# setup.sh - Set up dependencies for AudioMesh (including Node/Yarn, Rust, and iOS targets)
 
 set -e
 
-echo "=== FastDeck Setup Script ==="
+echo "=== AudioMesh Setup Script ==="
 
 # 1. Check/Install Rust
 if ! command -v cargo &> /dev/null; then

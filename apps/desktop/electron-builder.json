@@ -1,14 +1,14 @@
 {
   "extends": null,
   "electronVersion": "31.0.0",
-  "appId": "com.fastdeck.app",
-  "productName": "FastDeck",
+  "appId": "com.audiomesh.app",
+  "productName": "AudioMesh",
   "compression": "maximum",
   "publish": [
     {
       "provider": "github",
-      "owner": "FastDeck",
-      "repo": "fastdeck"
+      "owner": "audiomesh",
+      "repo": "audiomesh"
     }
   ],
   "directories": {

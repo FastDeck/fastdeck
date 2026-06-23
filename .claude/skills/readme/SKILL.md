@@ -73,9 +73,9 @@ Every major module or service README (such as `server/README.md` and `desktop/RE
 - Detailed request & response blocks using formatted JSON or type signatures.
 - Highlight serialization considerations (such as string-serialized `i64` variables to avoid JS precision loss).
 
-### 9. Flow Guides (Auth, Audio Sync, etc.)
+### 9. Flow Guides (Connection, Actions, etc.)
 
-- Flowcharts or ASCII sequence flows illustrating multi-step operations (e.g., node pairing flow, audio stream handoff lifecycle).
+- Flowcharts or ASCII sequence flows illustrating multi-step operations (e.g., mobile discovery, connection lifecycle, action execution).
 
 ### 10. State Management & Persistence
 
@@ -96,7 +96,7 @@ Every major module or service README (such as `server/README.md` and `desktop/RE
 
 - **Alerts**: Use GitHub-style warnings and notes to highlight critical information:
   > [!IMPORTANT]
-  > Node name must be set before joining a mesh session; do not hardcode device identifiers.
+  > Host address must be set correctly for local discovery to function.
 - **Code Fences**: Always specify the language name for syntax highlighting (e.g., `rust`, `bash`, `env`, `json`, `mermaid`).
 - **Tables**: Align header columns cleanly for readability. E.g., `|:---|:---|` for left-aligned columns.
 
@@ -120,4 +120,4 @@ Whenever a source code modification introduces changes to:
 3. Dependencies and tech stack versions.
 4. CLI options or environment variables.
 
-You **MUST** immediately update the corresponding module README. This requirement is enforced by the rule defined in [.claude/CLFASE.md](file:///Users/mr.robot/z-stash/FastDeck/tools/.claude/CLFASE.md).
+You **MUST** immediately update the corresponding module README. This requirement is enforced by the rule defined in [.claude/CLAUDE.md](file:///Users/mr.robot/z-stash/FastDeck/fastdeck/.claude/CLAUDE.md).

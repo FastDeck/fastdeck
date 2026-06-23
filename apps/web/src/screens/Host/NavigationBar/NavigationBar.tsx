@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Separator,
   HStack,
   Heading,
   Menu,
@@ -12,9 +11,7 @@ import { Icon, IconType } from '@assets';
 
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
-import { isEmpty } from 'lodash';
 
-import { usePaddingForScreen } from '../../hooks';
 import { NAVIGATION_LINKS } from './constants';
 
 const GitHubIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -31,26 +28,29 @@ const GitHubIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const NavigationBar = () => {
   const { t } = useTranslation();
-  const padding = usePaddingForScreen();
-  const titleKey = useLocation().pathname.split('/').pop();
-  const excludeKeys: string[] = [];
-  const title =
-    titleKey && !excludeKeys.includes(titleKey)
-      ? t(`NavigationBar.${titleKey}`)
-      : '';
+  const { pathname } = useLocation();
+  const isDocsPage = pathname.startsWith('/docs');
+
   return (
-    <HStack
-      paddingX={padding}
-      height={16}
+    <Box
       borderBottomWidth={1}
       borderBottomColor="border"
       shadow="sm"
-      justifyContent={'space-between'}
       position="sticky"
       top={0}
       zIndex={50}
       bg="bg.panel"
+      width="100%"
+      px={isDocsPage ? { base: 6, lg: 6 } : { base: 6, md: 16 }}
     >
+      <HStack
+        height={16}
+        maxW={isDocsPage ? '1400px' : '1200px'}
+        mx="auto"
+        justifyContent={'space-between'}
+        width="100%"
+      >
+      {/* Logo */}
       <HStack
         gap={1}
         _hover={{
@@ -77,21 +77,9 @@ const NavigationBar = () => {
             </Heading>
           </Box>
         </Link>
-        {!isEmpty(title) ? (
-          <>
-            <Separator
-              orientation={'vertical'}
-              mx={4}
-              bg={'border'}
-              width={'1px'}
-              height={6}
-            />
-            <Text fontSize="sm" color="fg.muted" data-testid="nav-page-title">
-              {title}{' '}
-            </Text>
-          </>
-        ) : null}
       </HStack>
+
+      {/* Right side: nav links + GitHub + mobile menu */}
       <HStack gap={4}>
         <HStack gap={{ base: 2, xl: 4 }} display={{ base: 'none', md: 'flex' }}>
           {NAVIGATION_LINKS.map(({ name, link }) => (
@@ -109,7 +97,7 @@ const NavigationBar = () => {
             >
               <Link to={link} style={{ display: 'flex', alignItems: 'center' }}>
                 <Text fontSize="sm" fontWeight={'medium'}>
-                  {name}
+                  {t(`NavigationBar.${name.toLowerCase()}`)}
                 </Text>
               </Link>
             </Button>
@@ -119,7 +107,7 @@ const NavigationBar = () => {
         <IconButton
           asChild
           variant="ghost"
-          aria-label="GitHub Repository"
+          aria-label={t('NavigationBar.githubRepository')}
           borderRadius="md"
           color="fg.muted"
           _hover={{ bg: 'bg.hover', color: 'primary' }}
@@ -127,7 +115,7 @@ const NavigationBar = () => {
           size="sm"
         >
           <a
-            href="https://github.com/FastDeck/fastdeck"
+            href="https://github.com/fastdeck/fastdeck"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -140,8 +128,8 @@ const NavigationBar = () => {
           </a>
         </IconButton>
 
-        <Box display={{ base: 'flex', md: 'none' }}>
-          <Menu.Root>
+        <Box display={{ base: 'flex', md: 'none' }} alignItems="center">
+          <Menu.Root positioning={{ placement: 'bottom-end' }}>
             <Menu.Trigger asChild>
               <Button
                 variant={'outline'}
@@ -151,39 +139,42 @@ const NavigationBar = () => {
                 py={2}
                 size="sm"
               >
-                Menu
+                {t('NavigationBar.menu')}
                 <Icon type={IconType.MENU} />
               </Button>
             </Menu.Trigger>
-            <Menu.Content
-              zIndex={100}
-              borderRadius="md"
-              boxShadow={'md'}
-              bg="bg.panel"
-              borderColor="border"
-            >
-              {NAVIGATION_LINKS.map(({ name, link }) => (
-                <Menu.Item key={link} value={link} asChild>
-                  <Link
-                    to={link}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      padding: '8px 16px',
-                    }}
-                  >
-                    <Text fontSize="sm" fontWeight={'medium'}>
-                      {name}
-                    </Text>
-                  </Link>
-                </Menu.Item>
-              ))}
-            </Menu.Content>
+            <Menu.Positioner>
+              <Menu.Content
+                zIndex={100}
+                borderRadius="md"
+                boxShadow={'md'}
+                bg="bg.panel"
+                borderColor="border"
+              >
+                {NAVIGATION_LINKS.map(({ name, link }) => (
+                  <Menu.Item key={link} value={link} asChild>
+                    <Link
+                      to={link}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '8px 16px',
+                      }}
+                    >
+                      <Text fontSize="sm" fontWeight={'medium'}>
+                        {t(`NavigationBar.${name.toLowerCase()}`)}
+                      </Text>
+                    </Link>
+                  </Menu.Item>
+                ))}
+              </Menu.Content>
+            </Menu.Positioner>
           </Menu.Root>
         </Box>
       </HStack>
     </HStack>
-  );
+  </Box>
+);
 };
 
 export default NavigationBar;

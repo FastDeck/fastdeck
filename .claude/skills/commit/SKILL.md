@@ -51,7 +51,7 @@ To provide a high-quality commit message in one go:
 
 ```bash
 # Pattern: printf "tag_index\nscope\ntitle\nDetailed body explanation with bullet points.\n\n" | make commit
-printf "3\FAS-19\nadd branding and skills\n- Implement FastDeck branding across core components.\n- Add custom SVG icons for the new design system.\n- Update global styles to use the vibrant FastDeck color palette.\n- Adhere to requirements specified in FAS-19 for visual excellence.\n\n" | make commit
+printf "3\FAS-19\nadd branding and skills\n- Implement FastDeck branding across core components.\n- Add custom SVG icons for the new design system.\n- Update global styles to use the Obsidian Flux color palette.\n- Adhere to requirements specified in FAS-19 for visual excellence.\n\n" | make commit
 ```
 
 ### Initial Commit (Interactive)

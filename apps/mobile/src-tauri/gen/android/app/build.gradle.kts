@@ -8,7 +8,7 @@ plugins {
 }
 
 base {
-    archivesName.set("FastDeck")
+    archivesName.set("AudioMesh")
 }
 
 val tauriProperties = Properties().apply {
@@ -27,10 +27,10 @@ val keystoreProperties = Properties().apply {
 
 android {
     compileSdk = 36
-    namespace = "com.fastdeck.mobile"
+    namespace = "com.audiomesh.mobile"
     defaultConfig {
         manifestPlaceholders["usesCleartextTraffic"] = "true"
-        applicationId = "com.fastdeck.mobile"
+        applicationId = "com.audiomesh.mobile"
         minSdk = 24
         targetSdk = 36
         versionCode = tauriProperties.getProperty("tauri.android.versionCode", "1").toInt()
@@ -85,7 +85,7 @@ android {
         val variant = this
         variant.outputs.all {
             val output = this as com.android.build.gradle.internal.api.BaseVariantOutputImpl
-            val baseName = "FastDeck"
+            val baseName = "AudioMesh"
             if (variant.buildType.name == "release") {
                 output.outputFileName = "${baseName}.apk"
             } else {
@@ -108,7 +108,7 @@ android {
             tasks.matching { it.name == taskName }.configureEach {
                 val finalizeTask = this as com.android.build.gradle.internal.tasks.FinalizeBundleTask
                 val file = finalizeTask.finalBundleFile.asFile.get()
-                val newName = if (buildType == "release") "FastDeck.aab" else "FastDeck-debug.aab"
+                val newName = if (buildType == "release") "AudioMesh.aab" else "AudioMesh-debug.aab"
                 val finalFile = File(file.parentFile, newName)
                 finalizeTask.finalBundleFile.fileValue(finalFile)
             }

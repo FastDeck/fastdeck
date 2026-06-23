@@ -20,9 +20,9 @@ const ProductPage = () => {
   const [detectedOS, setDetectedOS] = React.useState<DetectedOS>(null);
 
   const version = desktopPackage.version;
-  const macLink = `https://github.com/FastDeck/fastdeck/releases/tag/desktop-v${version}-mac`;
-  const winLink = `https://github.com/FastDeck/fastdeck/releases/tag/desktop-v${version}-win`;
-  const linuxLink = `https://github.com/FastDeck/fastdeck/releases/tag/desktop-v${version}-linux`;
+  const macLink = `https://github.com/fastdeck/fastdeck/releases/tag/desktop-v${version}-mac`;
+  const winLink = `https://github.com/fastdeck/fastdeck/releases/tag/desktop-v${version}-win`;
+  const linuxLink = `https://github.com/fastdeck/fastdeck/releases/tag/desktop-v${version}-linux`;
 
   React.useEffect(() => {
     const ua = window.navigator.userAgent;

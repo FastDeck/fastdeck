@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import App from 'fastdeck-client-common';
+import App from 'audiomesh-client-common';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 

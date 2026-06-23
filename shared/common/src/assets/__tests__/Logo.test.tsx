@@ -8,7 +8,7 @@ describe('Logo', () => {
     expect(svgElement).toBeInTheDocument();
     expect(svgElement).toHaveAttribute('width', '120');
     expect(svgElement).toHaveAttribute('height', '120');
-    expect(svgElement).toHaveClass('audiomesh-icon');
+    expect(svgElement).toHaveClass('fastdeck-icon');
   });
 
   it('renders correctly with custom size', () => {

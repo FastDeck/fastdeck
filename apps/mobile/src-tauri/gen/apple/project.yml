@@ -1,6 +1,6 @@
 name: app
 options:
-  bundleIdPrefix: com.fastdeck.mobile
+  bundleIdPrefix: com.audiomesh.mobile
   deploymentTarget:
     iOS: 14.0
 fileGroups: [../../src]
@@ -10,8 +10,8 @@ configs:
 settingGroups:
   app:
     base:
-      PRODUCT_NAME: fastdeck-mobile
-      PRODUCT_BUNDLE_IDENTIFIER: com.fastdeck.mobile
+      PRODUCT_NAME: audiomesh-mobile
+      PRODUCT_BUNDLE_IDENTIFIER: com.audiomesh.mobile
 targetTemplates:
   app:
     type: application

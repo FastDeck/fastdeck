@@ -28,7 +28,7 @@ This ruleset defines the standard patterns for interacting with Atlassian resour
   - `[Design]` for UI/UX and styling tasks.
   - `[Desktop]` for Electron desktop-specific tasks.
   - `[Mobile]` for Tauri mobile-specific tasks.
-- **Example:** `[Web] Implement node pairing screen`
+- **Example:** `[Web] Implement configuration grid layout`
 
 ## 3. Active Epics (Project: FAS)
 

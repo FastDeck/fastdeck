@@ -8,7 +8,7 @@ describe('Icon Wrapper', () => {
     const svgElement = container.querySelector('svg');
     expect(svgElement).toBeInTheDocument();
     expect(svgElement).toHaveAttribute('width', '60');
-    expect(svgElement).toHaveClass('audiomesh-icon');
+    expect(svgElement).toHaveClass('fastdeck-icon');
   });
 
   it('renders CloudIcon correctly', () => {

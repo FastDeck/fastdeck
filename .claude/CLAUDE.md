@@ -1,15 +1,17 @@
-# CLFASE.md
+# CLAUDE.md
 
 This file provides a high-level entry point for Claude-based tools working in the **FastDeck** repository.
 
 ## Overview
 
-This is a **React Web Application** (using Craco for configuration) and **Axum Rust Server** representing the FastDeck audio-networking platform.
+This is a **React Web Application** (using Craco for configuration), **Electron Desktop Application**, **Tauri Mobile Application**, and **Axum Rust Server** representing the FastDeck Stream Deck-style productivity tool platform.
 
 - **Web Framework**: React 18.3+
-- **Styling**: Chakra UI (Inter typography, brand colors) and Tailwind CSS
+- **Styling**: Chakra UI (Geist/Hanken Grotesk typography, Obsidian Flux brand colors)
 - **State Management**: Zustand, React Query
-- **Backend**: Axum with Tokio runtime (mock audio-sync services)
+- **Backend**: Axum with Tokio runtime (local gateway daemon)
+- **Desktop**: Electron v31 with React UI
+- **Mobile**: Tauri with React UI
 
 ## 📘 Primary Documentation
 
@@ -29,14 +31,14 @@ These are the most common commands for development:
 yarn install                   # Install all dependencies across workspaces
 
 # Web App Workspace
-yarn web:start                 # Start web local development server
-yarn web:dev                   # Start web local development server (alias)
+yarn web:dev                   # Start web local development server
 yarn web:build                 # Create production build for web
 yarn web:test                  # Run Jest tests for web
-yarn workspace fastdeck-web run lint:fix # Run ESLint and fix web issues
+yarn web:lint                  # Run ESLint for web
 
 # Common UI & Logic Workspace
 yarn common:test               # Run Jest tests specifically for common workspace
+yarn common:build              # Build common workspace package
 
 # Rust Server Workspace
 yarn server:start              # Run the Rust server (cargo run)
@@ -51,6 +53,20 @@ yarn desktop:dist:win          # Generate Windows installer packages (NSIS & Zip
 yarn desktop:dist:linux        # Generate Linux packages (deb & AppImage)
 yarn desktop:dist:all          # Package for all desktop platforms concurrently
 
+# Mobile App Workspace
+yarn mobile:dev                # Start mobile development server in Tauri
+yarn mobile:build              # Build mobile application
+yarn mobile:android            # Run Android development build in Tauri
+yarn mobile:ios                # Run iOS development build in Tauri
+yarn mobile:dist:android       # Generate Android release APK using Tauri
+yarn mobile:dist:ios           # Generate iOS release build using Tauri
+yarn mobile:dist:all           # Generate both mobile release packages
+yarn mobile:test               # Run Jest tests for mobile
+
+# Global scripts
+yarn build:all                 # Build both web and desktop packages
+yarn dist:all                  # Package for web, desktop, and mobile platforms
+yarn test:all                  # Run all workspace test suites
 make commit                    # Conventional commit helper
 ```
 
@@ -58,12 +74,12 @@ make commit                    # Conventional commit helper
 
 Advanced agent instructions are modularized in the `.claude/skills/` directory.
 
-- [Commit Workflow](file:///Users/mr.robot/z-stash/FastDeck/tools/.claude/skills/commit/SKILL.md)
-- [Jira Management](file:///Users/mr.robot/z-stash/FastDeck/tools/.claude/skills/jira/SKILL.md)
-- [Pull Request Skill](file:///Users/mr.robot/z-stash/FastDeck/tools/.claude/skills/pr/SKILL.md)
-- [Frontend Design](file:///Users/mr.robot/z-stash/FastDeck/tools/.claude/skills/frontend-design/SKILL.md)
-- [Web Development](file:///Users/mr.robot/z-stash/FastDeck/tools/.claude/skills/web/SKILL.md)
-- [README Guidelines](file:///Users/mr.robot/z-stash/FastDeck/tools/.claude/skills/readme/SKILL.md)
+- [Commit Workflow](file:///Users/mr.robot/z-stash/FastDeck/fastdeck/.claude/skills/commit/SKILL.md)
+- [Jira Management](file:///Users/mr.robot/z-stash/FastDeck/fastdeck/.claude/skills/jira/SKILL.md)
+- [Pull Request Skill](file:///Users/mr.robot/z-stash/FastDeck/fastdeck/.claude/skills/pr/SKILL.md)
+- [Frontend Design](file:///Users/mr.robot/z-stash/FastDeck/fastdeck/.claude/skills/frontend-design/SKILL.md)
+- [Web Development](file:///Users/mr.robot/z-stash/FastDeck/fastdeck/.claude/skills/web/SKILL.md)
+- [README Guidelines](file:///Users/mr.robot/z-stash/FastDeck/fastdeck/.claude/skills/readme/SKILL.md)
 
 ## 🌐 Localization Guidelines
 
@@ -73,7 +89,7 @@ Always ensure that any newly added or updated translation keys are copied and sy
 
 ## 🧪 Testing Guidelines
 
-Always add or update the unit tests (and their snapshots) to align with the requested feature implementations or changes. Run the test suite using `yarn web:test` or `yarn web:test -u` to verify that all changes are fully covered, correct, and pass successfully.
+Always add or update the unit tests (and their snapshots) to align with the requested feature implementations or changes. Run the test suite using `yarn web:test`, `yarn desktop:test`, or `yarn server:test` to verify that all changes are fully covered, correct, and pass successfully.
 
 ---
 
@@ -88,28 +104,29 @@ This section serves as the primary source of truth for AI agents working on the 
 | **Framework (Web)**  | [React 18.3+](https://react.dev/)                                                      |
 | **Desktop Shell**    | [Electron v31](https://www.electronjs.org/)                                            |
 | **Desktop Packager** | [electron-builder](https://www.electron.build/)                                        |
+| **Mobile Core**      | [Tauri v2](https://tauri.app/)                                                         |
 | **UI Library**       | [Chakra UI v3](https://chakra-ui.com/)                                                 |
 | **State Management** | [Zustand v5](https://zustand.docs.pmnd.rs/)                                            |
 | **Routing**          | [React Router v7](https://reactrouter.com/)                                            |
-| **Styling**          | Vanilla CSS + Chakra UI v3 (Panda CSS)                                                 |
+| **Styling**          | Vanilla CSS + Chakra UI v3                                                             |
 | **Language**         | [TypeScript 5.x](https://www.typescriptlang.org/) & [Rust](https://www.rust-lang.org/) |
 | **Testing**          | Jest + React Testing Library (v16+) + Cypress                                          |
 | **Backend (Server)** | [Axum v0.7](https://github.com/tokio-rs/axum) (Tokio Runtime)                          |
 | **Package Manager**  | [Yarn 4 (Berry)](https://yarnpkg.com/)                                                 |
-| **Aesthetic**        | Utilitarian Minimalism / Terminal-Luxury                                               |
-| **Brand Colors**     | Charcoal (#15111e) & Violet (#8b5cf6)                                                  |
+| **Aesthetic**        | Modern, premium, glassmorphism overlays, dynamic design                                |
+| **Brand Colors**     | Obsidian Flux theme (Background `#121416`, Primary `#bac8d7`)                         |
 
 ## 2. Design & Product Identity
 
 ### Visual Language
 
-- **Theme**: Dark mode by default. High contrast with subtle grain textures and glassmorphic overlays.
-- **Typography**: Geist (Sans-serif) for primary UI, Geist Mono for technical data and code.
+- **Theme**: Dark mode by default. High contrast with subtle grain textures and glassmorphic overlays (Obsidian Flux).
+- **Typography**: Geist (Sans-serif) for headings, Hanken Grotesk for body, JetBrains Mono for code.
 - **Components**: Crisp border-based separation and interactive micro-animations.
 
 ### Product Purpose
 
-FastDeck transforms nearby smartphones, tablets, and computers into a synchronized, unified speaker system using Wi-Fi and Bluetooth protocols. The platform organizes devices into audio mesh nodes with real-time latency compensation and volume management.
+FastDeck is a Stream Deck-style productivity tool that lets users configure a grid of action buttons on their mobile/tablet device, which communicate with a desktop application to trigger automated actions — launching apps, running scripts, controlling media, firing key bindings, and more.
 
 ## 3. Directory Structure
 
@@ -121,15 +138,13 @@ FastDeck transforms nearby smartphones, tablets, and computers into a synchroniz
 │   ├── desktop/            # Electron desktop application (Yarn Workspace)
 │   │   ├── main.js         # Electron main entry script (frameless, window setup)
 │   │   ├── preload.js      # Secure contextBridge API / diagnostics bridge
-│   │   ├── craco.config.js # Custom Webpack and Babel settings
 │   │   └── src/            # React UI code
 │   ├── mobile/             # Tauri mobile client app (Yarn Workspace)
 │   │   ├── src-tauri/      # Tauri Rust native configuration
 │   │   └── src/            # React UI code
 │   ├── web/                # React browser web application (Yarn Workspace)
 │   │   ├── public/         # Static assets and index.html
-│   │   ├── src/            # Pages, routes, static data, and context providers
-│   │   └── craco.config.js # Craco configuration layer
+│   │   └── src/            # Pages, routes, static data, and context providers
 │   └── server/             # Axum Rust HTTP server (Yarn Workspace / Cargo)
 │       ├── src/            # Rust handlers, services, and configuration
 │       └── Cargo.toml      # Rust package manifest
@@ -138,8 +153,7 @@ FastDeck transforms nearby smartphones, tablets, and computers into a synchroniz
 │   │   └── src/
 │   │       ├── assets/     # Reusable SVG icons & logo
 │   │       ├── components/ # Reusable UI components & theme
-│   │       ├── localization/ # i18next translation json locales
-│   │       └── testUtils/  # Shared testing wrappers
+│   │       └── localization/ # i18next translation json locales
 │   └── client-common/      # Shared client React views and logic (Yarn Workspace)
 │       └── src/            # Screen views, Zustand store slices, hooks, and services
 ├── scripts/                # Task-specific helper scripts
@@ -173,10 +187,10 @@ FastDeck transforms nearby smartphones, tablets, and computers into a synchroniz
 
 ### Rust Backend (Axum)
 
-- **Architecture**: Modular setup divided into HTTP `handlers/`, business logic `services/` (mock audio-sync services), and environment `config.rs`.
+- **Architecture**: Modular setup divided into HTTP `handlers/`, business logic `services/`, and environment `config.rs`.
 - **Handlers**: Write Axum handlers that return JSON payloads (`Json<T>`) or explicit statuses.
-- **Testing**: Write unit/integration tests and run using `cargo test` (or `yarn server:test` at root). Use `services/mock.rs` to mock audio mesh connections.
-- **README Maintenance**: Any change made to files inside `apps/server/` (new endpoints, changed payloads, new dependencies, new environment variables, new files, behaviour changes) **MUST** also update [`apps/server/README.md`](file:///Users/mr.robot/z-stash/FastDeck/tools/apps/server/README.md) to keep it accurate, following the rules in the [readme skill](file:///Users/mr.robot/z-stash/FastDeck/tools/.claude/skills/readme/SKILL.md). This includes but is not limited to: adding/removing routes in `handlers/mod.rs`, changing request/response types in handlers, changing `AudioService` trait methods, adding new Cargo dependencies, and modifying `config.rs`.
+- **Testing**: Write unit/integration tests and run using `cargo test` (or `yarn server:test` at root).
+- **README Maintenance**: Any change made to files inside `apps/server/` (new endpoints, changed payloads, new dependencies, new environment variables, new files, behaviour changes) **MUST** also update [`apps/server/README.md`](file:///Users/mr.robot/z-stash/FastDeck/fastdeck/apps/server/README.md) to keep it accurate, following the rules in the [readme skill](file:///Users/mr.robot/z-stash/FastDeck/fastdeck/.claude/skills/readme/SKILL.md).
 
 ### Desktop Application (Electron)
 
@@ -191,14 +205,14 @@ FastDeck transforms nearby smartphones, tablets, and computers into a synchroniz
 - **Unit/Integration**: `yarn web:test`
   - Snapshots are located in `__snapshots__` directories adjacent to tests.
   - RTL `renderHook` is natively imported from `@testing-library/react`.
-- **E2E**: `yarn workspace fastdeck-web cy:open`
+- **E2E**: `yarn workspace audiomesh-web cy:open`
 - **Build**: `yarn web:build` (Always verify build compatibility after dependency updates).
 
 ## 6. Agent Workflow
 
-1.  **Understand**: Review this file and `.claude/CLFASE.md`.
-2.  **Verify**: Always run `yarn workspace fastdeck-web lint` and `yarn web:test` before declaring a task complete.
-3.  **Documentation**: Always check if a README update is required for any modified components. If so, update the corresponding `README.md` following the guidelines in the [readme skill](file:///Users/mr.robot/z-stash/FastDeck/tools/.claude/skills/readme/SKILL.md).
+1.  **Understand**: Review this file and `.claude/CLAUDE.md`.
+2.  **Verify**: Always run `yarn workspace audiomesh-web lint` and `yarn web:test` before declaring a task complete.
+3.  **Documentation**: Always check if a README update is required for any modified components. If so, update the corresponding `README.md` following the guidelines in the [readme skill](file:///Users/mr.robot/z-stash/FastDeck/fastdeck/.claude/skills/readme/SKILL.md).
 4.  **Governance**: Follow Conventional Commits and link all changes to the **FastDeck** Jira project using `prefix/FAS-XXX` branch naming.
 
 ---

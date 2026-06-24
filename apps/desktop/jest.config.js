@@ -31,6 +31,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   moduleDirectories: ['node_modules'],
   moduleNameMapper: {
+    '^(\\..*)\\.js$': '$1',
     '^@assets$': '<rootDir>/../../shared/common/src/assets',
     '^@assets/(.*)$': '<rootDir>/../../shared/common/src/assets/$1',
     '^@components$': '<rootDir>/../../shared/common/src/components',

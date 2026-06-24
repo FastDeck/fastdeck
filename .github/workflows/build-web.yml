@@ -72,7 +72,7 @@ jobs:
         uses: TriPSs/conventional-changelog-action@latest
         with:
           github-token: ${{ secrets.PA_TOKEN }}
-          git-user-name: 'AudioMesh bot'
+          git-user-name: 'FastDeck bot'
           output-file: false
           version-file: 'apps/web/package.json'
           git-path: 'apps/web'
@@ -110,7 +110,7 @@ jobs:
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ftp.audiomesh.amitraikwar.in
+          server: ftp.fastdeck.amitraikwar.in
           username: u392139545.githubdep
           password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
           local-dir: apps/web/build/

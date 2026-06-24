@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+package fastdeck.services.v1;
+
+import "services/action.proto";
+
+message CellAction {
+  oneof action {
+    Action single_action = 1;
+    MultiAction multi_action = 2;
+  }
+}
+
+message Cell {
+  int32 row = 1;
+  int32 col = 2;
+  string label = 3;
+  string icon = 4; // Emoji, image file path/bytes, or SF Symbol name
+  string background = 5; // Hex color or gradient string
+  CellAction action = 6;
+  bool is_enabled = 7;
+  int32 page = 8; // Page index within the profile grid (0-based)
+}
+
+message Grid {
+  int32 rows = 1;
+  int32 cols = 2;
+  repeated Cell cells = 3;
+}
+
+message Profile {
+  string id = 1;
+  string name = 2;
+  Grid grid = 3;
+}
+
+message ServerInfo {
+  string name = 1;
+  string version = 2;
+  string active_profile_id = 3;
+  repeated string available_profiles = 4;
+}
+
+// GetDeckInfo
+message GetDeckInfoRequest {}
+
+message GetDeckInfoResponse {
+  ServerInfo server_info = 1;
+  Profile active_profile = 2;
+}
+
+// StreamDeckUpdates
+message StreamDeckUpdatesRequest {
+  string client_id = 1;
+}
+
+message StreamDeckUpdatesResponse {
+  oneof update {
+    ServerInfo server_info_update = 1;
+    Profile active_profile_update = 2;
+    Cell cell_update = 3;
+  }
+}
+
+// TriggerAction
+message TriggerActionRequest {
+  oneof trigger {
+    string action_id = 1;
+    CellCoordinate coordinate = 2;
+  }
+}
+
+message CellCoordinate {
+  int32 row = 1;
+  int32 col = 2;
+}
+
+message TriggerActionResponse {
+  bool success = 1;
+  string error_message = 2;
+}
+
+// SwitchProfile
+message SwitchProfileRequest {
+  string profile_id = 1;
+}
+
+message SwitchProfileResponse {
+  bool success = 1;
+  string error_message = 2;
+}
+
+// UpdateCell
+message UpdateCellRequest {
+  string profile_id = 1;
+  Cell cell = 2;
+}
+
+message UpdateCellResponse {
+  bool success = 1;
+  string error_message = 2;
+}
+
+service DeckService {
+  rpc GetDeckInfo(GetDeckInfoRequest) returns (GetDeckInfoResponse);
+  rpc StreamDeckUpdates(StreamDeckUpdatesRequest) returns (stream StreamDeckUpdatesResponse);
+  rpc TriggerAction(TriggerActionRequest) returns (TriggerActionResponse);
+  rpc SwitchProfile(SwitchProfileRequest) returns (SwitchProfileResponse);
+  rpc UpdateCell(UpdateCellRequest) returns (UpdateCellResponse);
+}

@@ -29,3 +29,8 @@ export interface TopologyEdge {
   rtt_ms?: number | null;
   status: 'connecting' | 'synced' | 'degraded' | 'disconnected';
 }
+
+// Re-export gRPC / protobuf generated types
+export * from './gen/deck_pb';
+export * from './gen/action_pb';
+export * from './gen/deck_connect';

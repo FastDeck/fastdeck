@@ -1,10 +1,12 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiClient } from './apiClient';
 import {
   ServerHealthResponse,
   Room,
   Peer,
   TopologyEdge,
+  GetDeckInfoResponse,
+  Cell,
 } from './types';
 
 export const useServerHealth = () => {
@@ -61,5 +63,42 @@ export const useTopology = (roomId: string | null | undefined) => {
     queryFn: () => roomId ? apiClient.getTopology(roomId) : Promise.resolve(null),
     refetchInterval: roomId ? 2000 : false,
     enabled: !!roomId,
+  });
+};
+
+export const useDeckInfo = () => {
+  return useQuery<GetDeckInfoResponse>({
+    queryKey: ['deckInfo'],
+    queryFn: () => apiClient.getDeckInfo(),
+    refetchInterval: (query) => (query.state.error ? false : 3000),
+    retry: 1,
+  });
+};
+
+export const useSwitchProfile = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (profileId: string) => apiClient.switchProfile(profileId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['deckInfo'] });
+    },
+  });
+};
+
+export const useTriggerAction = () => {
+  return useMutation({
+    mutationFn: ({ row, col }: { row: number; col: number }) =>
+      apiClient.triggerAction(row, col),
+  });
+};
+
+export const useUpdateCell = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ profileId, cell }: { profileId: string; cell: Cell }) =>
+      apiClient.updateCell(profileId, cell),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['deckInfo'] });
+    },
   });
 };

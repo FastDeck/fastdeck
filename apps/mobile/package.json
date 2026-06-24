@@ -1,6 +1,6 @@
 {
-  "name": "audiomesh-mobile",
-  "description": "AudioMesh mobile project",
+  "name": "fastdeck-mobile",
+  "description": "FastDeck mobile project",
   "version": "0.0.1",
   "homepage": ".",
   "scripts": {
@@ -56,8 +56,6 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/react-test-renderer": "^18.3.0",
-    "audiomesh-client-common": "workspace:*",
-    "audiomesh-common": "workspace:*",
     "babel-jest": "^29.7.0",
     "cypress": "^13.8.1",
     "eslint": "^8.0.1",
@@ -66,6 +64,8 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-promise": "^6.0.0",
+    "fastdeck-client-common": "workspace:*",
+    "fastdeck-common": "workspace:*",
     "framer-motion": "^11.3.2",
     "fuse.js": "^7.0.0",
     "husky": "^9.0.11",

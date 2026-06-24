@@ -1,21 +1,24 @@
 [package]
-name = "audiomesh-server"
+name = "fastdeck-server"
 version = "0.0.1"
 edition = "2021"
+default-run = "fastdeck-server"
 
 [lib]
-name = "audiomesh_server"
+name = "fastdeck_server"
 path = "src/lib.rs"
 
 [[bin]]
-name = "audiomesh-server"
+name = "fastdeck-server"
 path = "src/main.rs"
 
+[[bin]]
+name = "test_client"
+path = "src/testing/test_client.rs"
+
 [dependencies]
-axum = { version = "0.7.4", features = ["multipart", "ws"] }
 tokio = { version = "1.36.0", features = ["full"] }
-tokio-tungstenite = "0.24"
-tower-http = { version = "0.5.1", features = ["cors", "trace"] }
+tokio-stream = "0.1"
 serde = { version = "1.0.197", features = ["derive"] }
 serde_json = "1.0.114"
 uuid = { version = "1.7.0", features = ["v4"] }
@@ -24,7 +27,9 @@ futures-util = "0.3.30"
 dashmap = "6.1"
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+tonic = "0.11"
+tonic-web = "0.11"
+prost = "0.12"
 
-[dev-dependencies]
-tower = { version = "0.4.13", features = ["util"] }
-
+[build-dependencies]
+tonic-build = "0.11"

@@ -1,6 +1,6 @@
-# AudioMesh Server — Mesh Audio Gateway
+# FastDeck Server — Mesh Audio Gateway
 
-The AudioMesh server is a high-performance local gateway daemon written in Rust. It manages room lifecycle, peer connections, real-time tree topologies, low-latency audio packet routing (SFU), and sub-millisecond clock synchronization across local client devices.
+The FastDeck server is a high-performance local gateway daemon written in Rust. It manages room lifecycle, peer connections, real-time tree topologies, low-latency audio packet routing (SFU), and sub-millisecond clock synchronization across local client devices.
 
 ---
 

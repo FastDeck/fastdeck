@@ -1,16 +1,19 @@
 {
-  "name": "audiomesh-client-common",
+  "name": "fastdeck-client-common",
   "version": "0.0.1",
   "private": true,
   "main": "src/index.ts",
   "types": "src/index.ts",
   "dependencies": {
+    "@bufbuild/protobuf": "^1.10.0",
     "@chakra-ui/react": "^3.19.1",
+    "@connectrpc/connect": "^1.4.0",
+    "@connectrpc/connect-web": "^1.4.0",
     "@emotion/react": "^11.13.5",
     "@tanstack/react-form": "^1.33.0",
     "@tanstack/react-query": "^5.51.23",
     "@tanstack/react-query-devtools": "^5.51.23",
-    "audiomesh-common": "workspace:*",
+    "fastdeck-common": "workspace:*",
     "framer-motion": "^11.3.2",
     "fuse.js": "^7.0.0",
     "i18next": "^23.11.2",
@@ -25,6 +28,8 @@
     "zustand": "^5.0.13"
   },
   "devDependencies": {
+    "@bufbuild/protoc-gen-es": "^1.10.0",
+    "@connectrpc/protoc-gen-connect-es": "^1.4.0",
     "@types/lodash": "^4.17.24",
     "@types/node": "^16.18.91",
     "@types/react": "^19.2.14",

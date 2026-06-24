@@ -6,9 +6,9 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#121416" />
-    <meta name="description" content="AudioMesh projects website" />
+    <meta name="description" content="FastDeck projects website" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>AudioMesh</title>
+    <title>FastDeck</title>
     <!-- Google Fonts for Geist, Hanken Grotesk, and JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,6 +22,8 @@
       body {
         margin: 0;
         padding: 0;
+        height: 100vh;
+        overflow: hidden;
       }
 
       #initial-loader {
@@ -571,7 +573,7 @@
           </div> <!-- end spin layer -->
           </div> <!-- end tilt layer -->
         </div> <!-- end mesh container -->
-        <div class="loader-title">AudioMesh</div>
+        <div class="loader-title">FastDeck</div>
         <div class="loader-subtitle">SYNCHRONIZED SPEAKER NETWORK</div>
         <div class="loader-progress-track">
           <div class="loader-progress-bar"></div>
@@ -601,7 +603,7 @@
     </div>
 
     <script>
-      // AudioMesh network synchronization logs
+      // FastDeck network synchronization logs
       const logs = [
         'INITIALIZING AUDIO SUBSYSTEM...',
         'SCANNING WI-FI & BLUETOOTH INTERFACES...',

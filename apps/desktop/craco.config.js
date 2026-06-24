@@ -50,13 +50,19 @@ module.exports = {
     },
     configure: (webpackConfig) => {
       // Remove ModuleScopePlugin to allow importing from common/ workspace
-      if (webpackConfig.resolve && webpackConfig.resolve.plugins) {
-        const scopePluginIndex = webpackConfig.resolve.plugins.findIndex(
-          ({ constructor }) =>
-            constructor && constructor.name === 'ModuleScopePlugin',
-        );
-        if (scopePluginIndex !== -1) {
-          webpackConfig.resolve.plugins.splice(scopePluginIndex, 1);
+      if (webpackConfig.resolve) {
+        webpackConfig.resolve.extensionAlias = {
+          ...webpackConfig.resolve.extensionAlias,
+          '.js': ['.ts', '.tsx', '.js', '.jsx'],
+        };
+        if (webpackConfig.resolve.plugins) {
+          const scopePluginIndex = webpackConfig.resolve.plugins.findIndex(
+            ({ constructor }) =>
+              constructor && constructor.name === 'ModuleScopePlugin',
+          );
+          if (scopePluginIndex !== -1) {
+            webpackConfig.resolve.plugins.splice(scopePluginIndex, 1);
+          }
         }
       }
 

@@ -1,0 +1,136 @@
+{
+  "active_profile_id": "dev",
+  "profiles": {
+    "default": {
+      "id": "default",
+      "name": "Default Profile",
+      "grid": {
+        "rows": 3,
+        "cols": 5,
+        "cells": [
+          {
+            "row": 0,
+            "col": 0,
+            "label": "Terminal",
+            "icon": "💻",
+            "background": "#2e3440",
+            "action": {
+              "action": {
+                "SingleAction": {
+                  "id": "launch_terminal",
+                  "name": "Launch Terminal",
+                  "type": 4,
+                  "action_details": {
+                    "LaunchApp": {
+                      "path_or_name": "Terminal",
+                      "args": []
+                    }
+                  }
+                }
+              }
+            },
+            "is_enabled": true
+          },
+          {
+            "row": 0,
+            "col": 1,
+            "label": "GitHub",
+            "icon": "🌐",
+            "background": "#181717",
+            "action": {
+              "action": {
+                "SingleAction": {
+                  "id": "open_github",
+                  "name": "Open GitHub",
+                  "type": 5,
+                  "action_details": {
+                    "OpenUrl": {
+                      "url": "https://github.com"
+                    }
+                  }
+                }
+              }
+            },
+            "is_enabled": true
+          },
+          {
+            "row": 0,
+            "col": 2,
+            "label": "Play/Pause",
+            "icon": "⏯️",
+            "background": "#bf616a",
+            "action": {
+              "action": {
+                "SingleAction": {
+                  "id": "media_play_pause",
+                  "name": "Play or Pause",
+                  "type": 6,
+                  "action_details": {
+                    "MediaControl": {
+                      "command": 3
+                    }
+                  }
+                }
+              }
+            },
+            "is_enabled": true
+          },
+          {
+            "row": 1,
+            "col": 0,
+            "label": "Say Hello",
+            "icon": "👋",
+            "background": "#a3be8c",
+            "action": {
+              "action": {
+                "SingleAction": {
+                  "id": "run_hello",
+                  "name": "Run Echo Hello",
+                  "type": 3,
+                  "action_details": {
+                    "RunCommand": {
+                      "command": "echo 'Hello from FastDeck!'"
+                    }
+                  }
+                }
+              }
+            },
+            "is_enabled": true
+          }
+        ]
+      }
+    },
+    "dev": {
+      "id": "dev",
+      "name": "Developer Profile",
+      "grid": {
+        "rows": 3,
+        "cols": 5,
+        "cells": [
+          {
+            "row": 0,
+            "col": 0,
+            "label": "Create Dir",
+            "icon": "📁",
+            "background": "#4c566a",
+            "action": {
+              "action": {
+                "SingleAction": {
+                  "id": "create_dir",
+                  "name": "Create Demo Dir",
+                  "type": 1,
+                  "action_details": {
+                    "CreateFolder": {
+                      "path": "~/fastdeck-demo"
+                    }
+                  }
+                }
+              }
+            },
+            "is_enabled": true
+          }
+        ]
+      }
+    }
+  }
+}

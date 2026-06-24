@@ -1,5 +1,5 @@
 use std::net::SocketAddr;
-use audiomesh_server::{config::AppConfig, run_server};
+use fastdeck_server::{config::AppConfig, run_server};
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
 #[tokio::main]
@@ -8,7 +8,7 @@ async fn main() {
     tracing_subscriber::registry()
         .with(
             tracing_subscriber::EnvFilter::try_from_default_env()
-                .unwrap_or_else(|_| "audiomesh_server=info,tower_http=debug".into()),
+                .unwrap_or_else(|_| "fastdeck_server=info,tower_http=debug".into()),
         )
         .with(tracing_subscriber::fmt::layer())
         .init();

@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package fastdeck.services.v1;
+
+enum ActionType {
+  ACTION_TYPE_UNSPECIFIED = 0;
+  ACTION_TYPE_CREATE_FOLDER = 1;
+  ACTION_TYPE_RUN_SCRIPT = 2;
+  ACTION_TYPE_RUN_COMMAND = 3;
+  ACTION_TYPE_LAUNCH_APP = 4;
+  ACTION_TYPE_OPEN_URL = 5;
+  ACTION_TYPE_MEDIA_CONTROL = 6;
+  ACTION_TYPE_KEY_BINDING = 7;
+}
+
+enum MediaCommand {
+  MEDIA_COMMAND_UNSPECIFIED = 0;
+  MEDIA_COMMAND_PLAY = 1;
+  MEDIA_COMMAND_PAUSE = 2;
+  MEDIA_COMMAND_PLAY_PAUSE = 3;
+  MEDIA_COMMAND_STOP = 4;
+  MEDIA_COMMAND_NEXT = 5;
+  MEDIA_COMMAND_PREVIOUS = 6;
+  MEDIA_COMMAND_MUTE = 7;
+  MEDIA_COMMAND_VOLUME_UP = 8;
+  MEDIA_COMMAND_VOLUME_DOWN = 9;
+}
+
+message CreateFolderAction {
+  string path = 1;
+}
+
+message RunScriptAction {
+  string path = 1;
+  repeated string args = 2;
+}
+
+message RunCommandAction {
+  string command = 1;
+}
+
+message LaunchAppAction {
+  string path_or_name = 1;
+  repeated string args = 2;
+}
+
+message OpenUrlAction {
+  string url = 1;
+}
+
+message MediaControlAction {
+  MediaCommand command = 1;
+}
+
+message KeyBindingAction {
+  repeated string keys = 1; // e.g., ["Control", "c"]
+}
+
+message Action {
+  string id = 1;
+  string name = 2;
+  ActionType type = 3;
+  oneof action_details {
+    CreateFolderAction create_folder = 4;
+    RunScriptAction run_script = 5;
+    RunCommandAction run_command = 6;
+    LaunchAppAction launch_app = 7;
+    OpenUrlAction open_url = 8;
+    MediaControlAction media_control = 9;
+    KeyBindingAction key_binding = 10;
+  }
+}
+
+message MultiActionStep {
+  Action action = 1;
+  int32 delay_ms = 2;
+}
+
+message MultiAction {
+  string id = 1;
+  string name = 2;
+  repeated MultiActionStep steps = 3;
+}

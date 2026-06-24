@@ -1,7 +1,7 @@
 .PHONY: coverage
 coverage:
 	echo "Running coverage tests"
-	yarn workspace audiomesh-web test:cov
+	yarn workspace fastdeck-web test:cov
 	open -a "Google Chrome" apps/web/coverage/lcov-report/index.html
 
 .PHONY: branch-clean

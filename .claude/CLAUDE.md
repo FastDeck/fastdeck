@@ -205,13 +205,13 @@ FastDeck is a Stream Deck-style productivity tool that lets users configure a gr
 - **Unit/Integration**: `yarn web:test`
   - Snapshots are located in `__snapshots__` directories adjacent to tests.
   - RTL `renderHook` is natively imported from `@testing-library/react`.
-- **E2E**: `yarn workspace audiomesh-web cy:open`
+- **E2E**: `yarn workspace fastdeck-web cy:open`
 - **Build**: `yarn web:build` (Always verify build compatibility after dependency updates).
 
 ## 6. Agent Workflow
 
 1.  **Understand**: Review this file and `.claude/CLAUDE.md`.
-2.  **Verify**: Always run `yarn workspace audiomesh-web lint` and `yarn web:test` before declaring a task complete.
+2.  **Verify**: Always run `yarn workspace fastdeck-web lint` and `yarn web:test` before declaring a task complete.
 3.  **Documentation**: Always check if a README update is required for any modified components. If so, update the corresponding `README.md` following the guidelines in the [readme skill](file:///Users/mr.robot/z-stash/FastDeck/fastdeck/.claude/skills/readme/SKILL.md).
 4.  **Governance**: Follow Conventional Commits and link all changes to the **FastDeck** Jira project using `prefix/FAS-XXX` branch naming.
 

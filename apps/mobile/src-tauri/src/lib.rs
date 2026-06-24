@@ -21,7 +21,7 @@ pub fn run() {
         }
 
         let addr: std::net::SocketAddr = "127.0.0.1:50065".parse().unwrap();
-        if let Err(e) = audiomesh_server::run_server(addr).await {
+        if let Err(e) = fastdeck_server::run_server(addr).await {
           log::error!("Failed to start local Axum server: {:?}", e);
         }
       });

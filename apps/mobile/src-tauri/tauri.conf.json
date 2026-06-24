@@ -1,8 +1,8 @@
 {
   "$schema": "../../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "AudioMesh",
+  "productName": "FastDeck",
   "version": "../package.json",
-  "identifier": "com.audiomesh.mobile",
+  "identifier": "com.fastdeck.mobile",
   "build": {
     "frontendDist": "../build",
     "devUrl": "http://localhost:3000",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "AudioMesh",
+        "title": "FastDeck",
         "width": 800,
         "height": 600,
         "resizable": true,

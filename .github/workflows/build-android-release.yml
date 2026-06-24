@@ -39,7 +39,7 @@ jobs:
         uses: TriPSs/conventional-changelog-action@latest
         with:
           github-token: ${{ secrets.PA_TOKEN }}
-          git-user-name: 'AudioMesh bot'
+          git-user-name: 'FastDeck bot'
           output-file: false
           version-file: 'apps/mobile/package.json'
           git-path: 'apps/mobile'
@@ -67,7 +67,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Build Mobile React App
-        run: yarn workspace audiomesh-mobile build
+        run: yarn workspace fastdeck-mobile build
 
       - name: Upload Frontend Build Artifact
         uses: actions/upload-artifact@v7
@@ -143,8 +143,8 @@ jobs:
         run: |
           if [ -n "$ANDROID_KEYSTORE_BASE64" ]; then
             mkdir -p apps/mobile/src-tauri/gen/android
-            echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > apps/mobile/src-tauri/gen/android/audiomesh.keystore
-            echo "storeFile=${{ github.workspace }}/apps/mobile/src-tauri/gen/android/audiomesh.keystore" > apps/mobile/src-tauri/gen/android/keystore.properties
+            echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > apps/mobile/src-tauri/gen/android/fastdeck.keystore
+            echo "storeFile=${{ github.workspace }}/apps/mobile/src-tauri/gen/android/fastdeck.keystore" > apps/mobile/src-tauri/gen/android/keystore.properties
             echo "storePassword=$ANDROID_KEYSTORE_PASSWORD" >> apps/mobile/src-tauri/gen/android/keystore.properties
             echo "keyAlias=$ANDROID_KEY_ALIAS" >> apps/mobile/src-tauri/gen/android/keystore.properties
             echo "keyPassword=$ANDROID_KEY_PASSWORD" >> apps/mobile/src-tauri/gen/android/keystore.properties
@@ -156,7 +156,7 @@ jobs:
       - name: Build Android App
         env:
           TAURI_SKIP_FRONTEND_BUILD: 'true'
-        run: yarn workspace audiomesh-mobile run tauri android build --ci
+        run: yarn workspace fastdeck-mobile run tauri android build --ci
 
       - name: Upload Android Release Artifacts
         uses: actions/upload-artifact@v7
@@ -186,7 +186,7 @@ jobs:
         uses: TriPSs/conventional-changelog-action@latest
         with:
           github-token: ${{ secrets.PA_TOKEN }}
-          git-user-name: 'AudioMesh bot'
+          git-user-name: 'FastDeck bot'
           output-file: false
           version-file: 'apps/mobile/package.json'
           git-path: 'apps/mobile'
